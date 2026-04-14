@@ -1,0 +1,6 @@
+@HNG_Stage_0_HostAddress = http://localhost:5039
+
+GET {{HNG_Stage_0_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
