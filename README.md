@@ -77,13 +77,36 @@ dotnet run
 
 Swagger UI will be available at `/swagger` when the app is running.
 
+## Docker
+
+A `Dockerfile` and `docker-compose.yml` are included to containerize the application.
+
+Build the Docker image:
+
+```
+docker build -t hng_stage_0:latest .
+```
+
+Run the container:
+
+```
+docker run -p 5000:80 --env ASPNETCORE_ENVIRONMENT=Development hng_stage_0:latest
+```
+
+Or use docker-compose:
+
+```
+docker-compose up --build
+```
+
+The API will be available at `http://localhost:5000` inside the container mapping.
+
 ## Configuration & notes
 
 - `HttpClient` for `IGenderizeService` is registered in `Program.cs`.
 - CORS policy `AllowAll` is enabled for development convenience.
 - The service marks predictions as confident when `Probability >= 0.7` and `Count >= 100`.
 - The project does not include unit tests by default.
-
 
 ## License
 
