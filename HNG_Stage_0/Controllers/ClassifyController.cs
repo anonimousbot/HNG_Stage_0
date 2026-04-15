@@ -1,6 +1,7 @@
 ﻿using HNG_Stage_0.Interfaces;
 using HNG_Stage_0.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
 namespace HNG_Stage_0.Controllers
 {
@@ -26,6 +27,14 @@ namespace HNG_Stage_0.Controllers
                 {
                     Status = "error",
                     Message ="Name parameter is required"
+                });
+            }
+            if (!Regex.IsMatch(name, @"^[a-zA-Z]+$"))
+            {
+                return UnprocessableEntity(new BaseResponse<string>
+                {
+                    Status = "error",
+                    Message = "Name must contain only letters"
                 });
             }
             try
